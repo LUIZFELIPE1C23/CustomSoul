@@ -1,18 +1,18 @@
 const whatsappNumber = "5511999999999";
 
 const products = [
-	{ id: 1, name: "Caneca Meu Lugar Favorito", category: "Canecas", description: "Uma lembrança quentinha para acompanhar todos os dias.", price: "Consulte o valor", badge: "Mais vendido", image: "photo-1514228742587-6b1558fcca3d", details: "Caneca de cerâmica personalizável com nome, frase curta ou uma data especial. Um presente para começar o dia com um sorriso." },
-	{ id: 2, name: "Caneca Duo de Afeto", category: "Canecas", description: "Duas canecas, uma história que combina.", price: "Consulte o valor", badge: "Presente especial", image: "photo-1577937927133-66ef06acdf18", details: "Par de canecas que se completam. Escolha as frases, os nomes e as cores para criar um presente com a cara de vocês." },
-	{ id: 3, name: "Camiseta Boa Vibração", category: "Camisetas", description: "Conforto e personalidade para vestir por aí.", price: "Consulte o valor", badge: "Novidade", image: "photo-1529139574466-a303027c1d8b", details: "Camiseta confortável com estampa exclusiva. A arte, a cor e o tamanho são combinados com você antes da produção." },
-	{ id: 4, name: "Camiseta do Nosso Jeito", category: "Camisetas", description: "Uma ideia divertida que merece sair do papel.", price: "Consulte o valor", badge: "Feito pra você", image: "photo-1503341504253-dff4815485f1", details: "Transforme uma frase, ilustração ou piada interna em uma camiseta exclusiva. Produzida sob encomenda." },
-	{ id: 5, name: "Garrafa Meu Ritmo", category: "Garrafas e copos", description: "Sua frase favorita vai com você pra todo lugar.", price: "Consulte o valor", badge: "Mais vendido", image: "photo-1602143407151-7111542de6e8", details: "Garrafa personalizável com nome, palavra ou arte simples. Uma companhia prática para a rotina e para os passeios." },
-	{ id: 6, name: "Copo Brinde à Vida", category: "Garrafas e copos", description: "Um brinde às coisas boas, grandes e pequenas.", price: "Consulte o valor", badge: "Novidade", image: "photo-1602143407151-7111542de6e8", details: "Copo reutilizável com personalização à sua escolha. Ideal para presentear ou deixar a mesa de trabalho mais alegre." },
-	{ id: 7, name: "Chaveiro Pedacinho de Casa", category: "Chaveiros e acessórios", description: "Um detalhe especial pra levar no bolso.", price: "Consulte o valor", badge: "Presente especial", image: "photo-1523275335684-37898b6baf30", details: "Chaveiro personalizado com inicial, palavra ou símbolo. Pequeno no tamanho, grande no significado." },
-	{ id: 8, name: "Chaveiro Nossa História", category: "Chaveiros e acessórios", description: "Uma lembrança de bolso para quem é importante.", price: "Consulte o valor", badge: "Feito pra você", image: "photo-1511556820780-d912e42b4980", details: "Um acessório leve e personalizado para celebrar amizades, datas marcantes ou aquele lugar especial." },
-	{ id: 9, name: "Quadro Casa com Afeto", category: "Quadros e decoração", description: "Uma frase que deixa qualquer cantinho mais seu.", price: "Consulte o valor", badge: "Mais vendido", image: "photo-1513519245088-0e12902e5a38", details: "Quadro decorativo com mensagem, nomes ou data escolhidos por você. A arte é preparada para combinar com seu espaço." },
-	{ id: 10, name: "Pôster Nossa Constelação", category: "Quadros e decoração", description: "Um céu especial para uma data inesquecível.", price: "Consulte o valor", badge: "Presente especial", image: "photo-1513364776144-60967b0f800f", details: "Pôster personalizado para celebrar um dia importante. Escolha a data e a dedicatória que acompanham a composição." },
-	{ id: 11, name: "Kit Pausa Gostosa", category: "Kits para presentear", description: "Um convite a desacelerar e aproveitar o momento.", price: "Consulte o valor", badge: "Queridinho", image: "photo-1513475382585-d06e58bcb0e0", details: "Kit demonstrativo que pode reunir caneca, cartão e pequenos mimos. Consulte as opções disponíveis e personalize a mensagem." },
-	{ id: 12, name: "Kit Um Dia Mais Doce", category: "Kits para presentear", description: "Uma combinação pensada para arrancar sorrisos.", price: "Consulte o valor", badge: "Novidade", image: "photo-1549465220-1a8b9238cd48", details: "Monte um presente completo com itens personalizados e uma mensagem especial. Os componentes podem ser ajustados ao seu orçamento." }
+	{ id: 1, name: "Caneca Meu Lugar Favorito", category: "Canecas", description: "Uma lembrança quentinha para acompanhar todos os dias.", price: "Consulte o valor", badge: "Mais vendido", image: "caneca", details: "Caneca de cerâmica personalizável com nome, frase curta ou uma data especial. Um presente para começar o dia com um sorriso." },
+	{ id: 2, name: "Caneca Duo de Afeto", category: "Canecas", description: "Duas canecas, uma história que combina.", price: "Consulte o valor", badge: "Presente especial", image: "cafe", details: "Par de canecas que se completam. Escolha as frases, os nomes e as cores para criar um presente com a cara de vocês." },
+	{ id: 3, name: "Camiseta Boa Vibração", category: "Camisetas", description: "Conforto e personalidade para vestir por aí.", price: "Consulte o valor", badge: "Novidade", image: "oculos", details: "Camiseta confortável com estampa exclusiva. A arte, a cor e o tamanho são combinados com você antes da produção." },
+	{ id: 4, name: "Camiseta do Nosso Jeito", category: "Camisetas", description: "Uma ideia divertida que merece sair do papel.", price: "Consulte o valor", badge: "Feito pra você", image: "camiseta", details: "Transforme uma frase, ilustração ou piada interna em uma camiseta exclusiva. Produzida sob encomenda." },
+	{ id: 5, name: "Garrafa Meu Ritmo", category: "Garrafas e copos", description: "Sua frase favorita vai com você pra todo lugar.", price: "Consulte o valor", badge: "Mais vendido", image: "garrafa", details: "Garrafa personalizável com nome, palavra ou arte simples. Uma companhia prática para a rotina e para os passeios." },
+	{ id: 6, name: "Copo Brinde à Vida", category: "Garrafas e copos", description: "Um brinde às coisas boas, grandes e pequenas.", price: "Consulte o valor", badge: "Novidade", image: "garrafa", details: "Copo reutilizável com personalização à sua escolha. Ideal para presentear ou deixar a mesa de trabalho mais alegre." },
+	{ id: 7, name: "Chaveiro Pedacinho de Casa", category: "Chaveiros e acessórios", description: "Um detalhe especial pra levar no bolso.", price: "Consulte o valor", badge: "Presente especial", image: "relogio", details: "Chaveiro personalizado com inicial, palavra ou símbolo. Pequeno no tamanho, grande no significado." },
+	{ id: 8, name: "Chaveiro Nossa História", category: "Chaveiros e acessórios", description: "Uma lembrança de bolso para quem é importante.", price: "Consulte o valor", badge: "Feito pra você", image: "sapatos", details: "Um acessório leve e personalizado para celebrar amizades, datas marcantes ou aquele lugar especial." },
+	{ id: 9, name: "Quadro Casa com Afeto", category: "Quadros e decoração", description: "Uma frase que deixa qualquer cantinho mais seu.", price: "Consulte o valor", badge: "Mais vendido", image: "quadros", details: "Quadro decorativo com mensagem, nomes ou data escolhidos por você. A arte é preparada para combinar com seu espaço." },
+	{ id: 10, name: "Pôster Nossa Constelação", category: "Quadros e decoração", description: "Um céu especial para uma data inesquecível.", price: "Consulte o valor", badge: "Presente especial", image: "pincel", details: "Pôster personalizado para celebrar um dia importante. Escolha a data e a dedicatória que acompanham a composição." },
+	{ id: 11, name: "Kit Pausa Gostosa", category: "Kits para presentear", description: "Um convite a desacelerar e aproveitar o momento.", price: "Consulte o valor", badge: "Queridinho", image: "livros", details: "Kit demonstrativo que pode reunir caneca, cartão e pequenos mimos. Consulte as opções disponíveis e personalize a mensagem." },
+	{ id: 12, name: "Kit Um Dia Mais Doce", category: "Kits para presentear", description: "Uma combinação pensada para arrancar sorrisos.", price: "Consulte o valor", badge: "Novidade", image: "presente", details: "Monte um presente completo com itens personalizados e uma mensagem especial. Os componentes podem ser ajustados ao seu orçamento." }
 ];
 
 const featuredIds = [1, 5, 9, 11];
@@ -27,8 +27,8 @@ let searchTerm = "";
 let featuredIndex = 0;
 let toastTimer;
 
-function imageUrl(image, width = 700) {
-	return `https://images.unsplash.com/${image}?auto=format&fit=crop&w=${width}&q=82`;
+function imageUrl(image) {
+	return `img/${image}.jpg`;
 }
 
 function whatsappUrl(product) {
@@ -88,7 +88,7 @@ function renderFeatured() {
 	const stage = document.querySelector(".featured-stage");
 	stage.innerHTML = `
 		<article class="featured-card">
-			<div class="featured-image"><img src="${imageUrl(product.image, 1100)}" alt="${product.name}" loading="lazy"><span class="featured-badge">${product.badge}</span></div>
+			<div class="featured-image"><img src="${imageUrl(product.image)}" alt="${product.name}" loading="lazy"><span class="featured-badge">${product.badge}</span></div>
 			<div class="featured-info"><p class="eyebrow">${product.category}</p><h3>${product.name}</h3><p>${product.description}</p><strong class="featured-price">${product.price}</strong><div class="featured-actions"><button class="button button-dark" type="button" data-details="${product.id}">Ver detalhes <span aria-hidden="true">↗</span></button><a class="button button-outline" href="${whatsappUrl(product)}" target="_blank" rel="noopener noreferrer" data-quote="${product.id}">Tenho interesse</a></div></div>
 		</article>`;
 	document.querySelector(".carousel-dots").innerHTML = featuredIds.map((id, index) => `<button class="carousel-dot${index === featuredIndex ? " is-active" : ""}" type="button" data-slide="${index}" aria-label="Mostrar destaque ${index + 1}" aria-pressed="${index === featuredIndex}"></button>`).join("");
@@ -97,7 +97,7 @@ function renderFeatured() {
 function showProductDetails(productId) {
 	const product = products.find((item) => item.id === Number(productId));
 	if (!product) return;
-	modalContent.innerHTML = `<img src="${imageUrl(product.image, 900)}" alt="${product.name}"><div class="modal-info"><p class="eyebrow">${product.category}</p><h2 id="modal-title">${product.name}</h2><p>${product.details}</p><strong>${product.price}</strong><a class="button button-dark" href="${whatsappUrl(product)}" target="_blank" rel="noopener noreferrer" data-quote="${product.id}">Solicitar orçamento <span aria-hidden="true">↗</span></a></div>`;
+	modalContent.innerHTML = `<img src="${imageUrl(product.image)}" alt="${product.name}"><div class="modal-info"><p class="eyebrow">${product.category}</p><h2 id="modal-title">${product.name}</h2><p>${product.details}</p><strong>${product.price}</strong><a class="button button-dark" href="${whatsappUrl(product)}" target="_blank" rel="noopener noreferrer" data-quote="${product.id}">Solicitar orçamento <span aria-hidden="true">↗</span></a></div>`;
 	modal.showModal();
 }
 
