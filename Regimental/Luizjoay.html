@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atividades — Cumprimentar e Contador</title>
+    <style>
+      /* CSS compartilhado */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 32px 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #f4f7fb, #dfe9f5);
+        color: #1f2937;
+      }
+
+      .card {
+        width: min(460px, 90vw);
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+        padding: 30px 24px;
+      }
+
+      /* CSS Atividade 1 */
+      h1 {
+        margin: 0 0 20px;
+        text-align: center;
+        font-size: 2rem;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      label {
+        font-weight: 600;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+      }
+
+      /* Estilos compartilhados dos botões */
+      button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 10px;
+        background: #2563eb;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.15s ease;
+      }
+
+      button:hover {
+        background: #1d4ed8;
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      .message {
+        min-height: 24px;
+        margin-top: 20px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        display: none;
+      }
+
+      .message.error {
+        display: block;
+        background: #fef2f2;
+        color: #b91c1c;
+        border: 1px solid #fecaca;
+      }
+
+      .message.success {
+        display: block;
+        background: #ecfdf5;
+        color: #166534;
+        border: 1px solid #a7f3d0;
+      }
+
+      /* CSS Atividade 2 */
+      button:disabled {
+        background: #cbd5e1;
+        color: #64748b;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      button:disabled:hover {
+        background: #cbd5e1;
+      }
+
+      .counter-section {
+        margin-top: 30px;
+        padding-top: 24px;
+        border-top: 1px solid #e2e8f0;
+        text-align: center;
+      }
+
+      .counter-section h2 {
+        margin: 0 0 12px;
+        font-size: 1.4rem;
+      }
+
+      .counter-value {
+        margin: 0 0 20px;
+        color: #2563eb;
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1.1;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .counter-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .counter-actions button {
+        flex: 1 1 110px;
+      }
+
+      .counter-actions .reset-button {
+        background: #475569;
+      }
+
+      .counter-actions .reset-button:hover {
+        background: #334155;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <!-- HTML Atividade 1 -->
+      <h1>Cumprimentar</h1>
+
+      <form id="greetingForm" novalidate>
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" type="text" placeholder="Digite seu nome" />
+        <button type="submit">Cumprimentar</button>
+      </form>
+
+      <p id="resultado" class="message" aria-live="polite"></p>
+
+      <!-- HTML Atividade 2 -->
+      <section class="counter-section" aria-labelledby="counterTitle">
+        <h2 id="counterTitle">Atividade 2 — Contador</h2>
+        <p id="counterValue" class="counter-value" aria-live="polite">0</p>
+        <div class="counter-actions">
+          <button id="increaseButton" type="button">Aumentar</button>
+          <button id="decreaseButton" type="button" disabled>Diminuir</button>
+          <button id="resetButton" class="reset-button" type="button">Zerar</button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // JS Atividade 1
+      const form = document.getElementById('greetingForm');
+      const input = document.getElementById('nome');
+      const resultado = document.getElementById('resultado');
+
+      function mostrarMensagem(texto, tipo) {
+        resultado.textContent = texto;
+        resultado.className = `message ${tipo}`;
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const nome = input.value.trim();
+
+        if (!nome) {
+          mostrarMensagem('Digite seu nome antes de cumprimentar.', 'error');
+          input.focus();
+          return;
+        }
+
+        mostrarMensagem(`Olá, ${nome}!`, 'success');
+      });
+
+      input.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          form.requestSubmit();
+        }
+      });
+
+      // JS Atividade 2
+      const counterValue = document.getElementById('counterValue');
+      const increaseButton = document.getElementById('increaseButton');
+      const decreaseButton = document.getElementById('decreaseButton');
+      const resetButton = document.getElementById('resetButton');
+      let contador = 0;
+
+      function atualizarContador() {
+        counterValue.textContent = contador;
+        decreaseButton.disabled = contador === 0;
+      }
+
+      atualizarContador();
+
+      increaseButton.addEventListener('click', function () {
+        contador += 1;
+        atualizarContador();
+      });
+
+      decreaseButton.addEventListener('click', function () {
+        if (contador > 0) {
+          contador -= 1;
+          atualizarContador();
+        }
+      });
+
+      resetButton.addEventListener('click', function () {
+        contador = 0;
+        atualizarContador();
+      });
+    </script>
+  </body>
+</html>
