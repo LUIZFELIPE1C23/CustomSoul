@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividades — Cumprimentar e Contador</title>
+    <title>Atividades</title>
     <style>
-      /* CSS compartilhado */
       * {
         box-sizing: border-box;
       }
@@ -13,38 +12,57 @@
       body {
         margin: 0;
         min-height: 100vh;
-        padding: 32px 0;
+        padding: 24px;
         font-family: Arial, sans-serif;
         background: linear-gradient(135deg, #f4f7fb, #dfe9f5);
         color: #1f2937;
       }
 
-      .card {
-        width: min(460px, 90vw);
-        margin: 0 auto;
-        background: #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
-        padding: 30px 24px;
-      }
-
-      /* CSS Atividade 1 */
-      h1 {
-        margin: 0 0 20px;
+      /* css compartilhado */
+      .page-header {
+        width: 100%;
+        margin: 0 auto 20px;
         text-align: center;
-        font-size: 2rem;
       }
 
+      .page-header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+      }
+
+      .activities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+        gap: 16px;
+        width: 100%;
+        margin: 0;
+      }
+
+      .card {
+        min-width: 0;
+        background: #ffffff;
+        border-radius: 14px;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
+        padding: 20px;
+      }
+
+      .card h2 {
+        margin: 0 0 16px;
+        font-size: 1.2rem;
+      }
+
+      /* css atv 1 */
       form {
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 10px;
       }
 
       label {
         font-weight: 600;
       }
 
+      /* css compartilhado */
       input {
         width: 100%;
         padding: 12px 14px;
@@ -54,13 +72,14 @@
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
       }
 
+      /* css compartilhado */
       input:focus {
         outline: none;
         border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
       }
 
-      /* Estilos compartilhados dos botões */
+      /* css compartilhado */
       button {
         padding: 12px 18px;
         border: none;
@@ -73,23 +92,26 @@
         transition: background 0.2s ease, transform 0.15s ease;
       }
 
+      /* css compartilhado */
       button:hover {
         background: #1d4ed8;
       }
 
+      /* css compartilhado */
       button:active {
         transform: translateY(1px);
       }
 
+      /* css atv 1 */
       .message {
-        min-height: 24px;
-        margin-top: 20px;
+        margin: 12px 0 0;
         padding: 10px 12px;
         border-radius: 8px;
         font-weight: 600;
         display: none;
       }
 
+      /* css atv 1 */
       .message.error {
         display: block;
         background: #fef2f2;
@@ -97,6 +119,7 @@
         border: 1px solid #fecaca;
       }
 
+      /* css atv 1 */
       .message.success {
         display: block;
         background: #ecfdf5;
@@ -104,7 +127,7 @@
         border: 1px solid #a7f3d0;
       }
 
-      /* CSS Atividade 2 */
+      /* css atv 2 */
       button:disabled {
         background: #cbd5e1;
         color: #64748b;
@@ -112,31 +135,32 @@
         transform: none;
       }
 
+      /* css atv 2 */
       button:disabled:hover {
         background: #cbd5e1;
       }
 
+      /* css atv 2 */
       .counter-section {
-        margin-top: 30px;
-        padding-top: 24px;
-        border-top: 1px solid #e2e8f0;
         text-align: center;
       }
 
+      /* css atv 2 */
       .counter-section h2 {
-        margin: 0 0 12px;
-        font-size: 1.4rem;
+        text-align: left;
       }
 
+      /* css atv 2 */
       .counter-value {
-        margin: 0 0 20px;
+        margin: 8px 0 16px;
         color: #2563eb;
-        font-size: 4rem;
+        font-size: 3rem;
         font-weight: 800;
         line-height: 1.1;
         font-variant-numeric: tabular-nums;
       }
 
+      /* css atv 2 */
       .counter-actions {
         display: flex;
         flex-wrap: wrap;
@@ -144,46 +168,607 @@
         gap: 10px;
       }
 
+      /* css atv 2 */
       .counter-actions button {
         flex: 1 1 110px;
       }
 
+      /* css compartilhado */
+      .activity-card {
+        min-height: 150px;
+      }
+
+      /* css compartilhado */
+      /* css atv 2 */
       .counter-actions .reset-button {
         background: #475569;
       }
 
+      /* css atv 2 */
       .counter-actions .reset-button:hover {
         background: #334155;
+      }
+
+      /* css compartilhado */
+      @media (max-width: 480px) {
+        body {
+          padding: 16px;
+        }
+
+        .card {
+          padding: 16px;
+        }
+      }
+
+      /* css atv 3 */
+      .calculator-fields {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .calculator-fields .wide-field {
+        grid-column: 1 / -1;
+      }
+
+      /* css compartilhado */
+      .activity-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .activity-actions button {
+        flex: 1 1 110px;
+      }
+
+      .activity-result,
+      .activity-status {
+        margin: 12px 0 0;
+        padding: 10px;
+        border-radius: 8px;
+        background: #f1f5f9;
+        color: #334155;
+        overflow-wrap: anywhere;
+      }
+
+      .activity-result:empty,
+      .activity-status:empty {
+        display: none;
+      }
+
+      .activity-result.error,
+      .activity-status.error {
+        background: #fef2f2;
+        color: #b91c1c;
+      }
+
+      .activity-result.success,
+      .activity-status.success {
+        background: #ecfdf5;
+        color: #166534;
+      }
+
+      /* css atv 4 */
+      body.dark-theme {
+        background: #111827;
+        color: #f8fafc;
+      }
+
+      body.dark-theme .card {
+        background: #1f2937;
+        color: #f8fafc;
+      }
+
+      body.dark-theme input,
+      body.dark-theme select,
+      body.dark-theme textarea {
+        background: #111827;
+        color: #f8fafc;
+        border-color: #64748b;
+      }
+
+      body.dark-theme .activity-result,
+      body.dark-theme .activity-status {
+        background: #334155;
+        color: #f8fafc;
+      }
+
+      body.dark-theme .activity-status.error {
+        background: #7f1d1d;
+        color: #fee2e2;
+      }
+
+      body.dark-theme .activity-status.success {
+        background: #14532d;
+        color: #dcfce7;
+      }
+
+      /* css atv 5 */
+      .registration-card {
+        align-self: start;
+      }
+
+      .registration-form {
+        display: grid;
+        gap: 5px;
+      }
+
+      .registration-form .wide-field {
+        grid-column: 1 / -1;
+      }
+
+      .registration-form input:not([type="checkbox"]) {
+        padding: 8px 10px;
+      }
+
+      .terms-field {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .terms-field input {
+        width: auto;
+        margin-top: 4px;
+      }
+
+      .field-error {
+        grid-column: 1 / -1;
+        min-height: 0;
+        margin: -4px 0 0;
+        color: #b91c1c;
+        font-size: 0.8rem;
+      }
+
+      .invalid-field {
+        border-color: #dc2626;
+      }
+
+      /* css atv 6 */
+      .task-list {
+        display: grid;
+        gap: 8px;
+        padding: 0;
+        margin: 12px 0 0;
+        list-style: none;
+      }
+
+      .task-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 10px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+      }
+
+      .task-item.is-complete .task-text {
+        color: #64748b;
+        text-decoration: line-through;
+      }
+
+      .task-item button,
+      .cart-item button {
+        padding: 8px 10px;
+      }
+
+      .delete-button {
+        background: #b91c1c;
+      }
+
+      .delete-button:hover {
+        background: #991b1b;
+      }
+
+      /* css atv 7 */
+      .catalog-card {
+        align-self: start;
+      }
+
+      .catalog-filters {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+        margin-bottom: 6px;
+      }
+
+      .catalog-filters label:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .catalog-filters input,
+      .catalog-filters select {
+        padding: 6px 8px;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .catalog-card .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+      }
+
+      .product-item {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 5px;
+        padding: 8px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+      }
+
+      .catalog-card .product-item {
+        gap: 3px;
+        padding: 6px;
+        font-size: 0.78rem;
+        line-height: 1.2;
+      }
+
+      .catalog-card .product-item span {
+        font-size: 0.72rem;
+      }
+
+      .catalog-count {
+        margin: 6px 0;
+        font-size: 0.9rem;
+      }
+
+      /* css atv 8 */
+      .quiz-options {
+        display: grid;
+        gap: 8px;
+        margin: 12px 0;
+      }
+
+      .quiz-progress {
+        height: 10px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        border-radius: 99px;
+        background: #e2e8f0;
+      }
+
+      .quiz-progress span {
+        display: block;
+        height: 100%;
+        background: #2563eb;
+        transition: width 0.2s ease;
+      }
+
+      .quiz-options button {
+        background: #475569;
+        text-align: left;
+      }
+
+      .quiz-options button.correct-answer {
+        background: #15803d;
+      }
+
+      .quiz-options button.wrong-answer {
+        background: #b91c1c;
+      }
+
+      /* css atv 9 */
+      .stopwatch-display {
+        margin: 12px 0;
+        padding: 16px;
+        border-radius: 10px;
+        background: #0f172a;
+        color: #67e8f9;
+        font-size: clamp(2rem, 10vw, 3rem);
+        font-variant-numeric: tabular-nums;
+        text-align: center;
+      }
+
+      /* css atv 10 */
+      .notes-form {
+        display: grid;
+        gap: 10px;
+      }
+
+      .notes-form textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .confirmation-dialog {
+        width: min(360px, calc(100% - 32px));
+        border: 0;
+        border-radius: 12px;
+        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.3);
+      }
+
+      .confirmation-dialog::backdrop {
+        background: rgba(15, 23, 42, 0.55);
+      }
+
+      /* css atv 11 */
+      .user-list {
+        display: grid;
+        gap: 8px;
+        padding: 0;
+        margin: 12px 0 0;
+        list-style: none;
+      }
+
+      .user-item {
+        padding: 10px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        overflow-wrap: anywhere;
+      }
+
+      /* css atv 12 */
+      .cart-module-help {
+        margin: 0 0 12px;
+      }
+
+      .cart-list {
+        display: grid;
+        gap: 8px;
+        padding: 0;
+        margin: 12px 0 0;
+        list-style: none;
+      }
+
+      .cart-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 10px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+      }
+
+      .cart-total {
+        margin: 16px 0 0;
+        font-size: 1.2rem;
+        font-weight: 800;
+      }
+
+      @media (max-width: 480px) {
+        .calculator-fields {
+          grid-template-columns: 1fr;
+        }
+
+        .calculator-fields .wide-field {
+          grid-column: auto;
+        }
+
+        .product-grid {
+          grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr));
+        }
+
+        .catalog-card .product-grid {
+          grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr));
+        }
       }
     </style>
   </head>
   <body>
-    <main class="card">
-      <!-- HTML Atividade 1 -->
-      <h1>Cumprimentar</h1>
+    <header class="page-header">
+      <h1>Atividades</h1>
+    </header>
 
-      <form id="greetingForm" novalidate>
-        <label for="nome">Nome</label>
-        <input id="nome" name="nome" type="text" placeholder="Digite seu nome" />
-        <button type="submit">Cumprimentar</button>
-      </form>
+    <!-- html compartilhado: grade das atividades -->
+    <main class="activities-grid" aria-label="Lista de atividades">
+      <article class="card">
+        <!-- html atv 1 -->
+        <h2>Atividade 1 — Cumprimentar</h2>
 
-      <p id="resultado" class="message" aria-live="polite"></p>
+        <form id="greetingForm" novalidate>
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" placeholder="Digite seu nome" />
+          <button type="submit">Cumprimentar</button>
+        </form>
 
-      <!-- HTML Atividade 2 -->
-      <section class="counter-section" aria-labelledby="counterTitle">
-        <h2 id="counterTitle">Atividade 2 — Contador</h2>
-        <p id="counterValue" class="counter-value" aria-live="polite">0</p>
-        <div class="counter-actions">
-          <button id="increaseButton" type="button">Aumentar</button>
-          <button id="decreaseButton" type="button" disabled>Diminuir</button>
-          <button id="resetButton" class="reset-button" type="button">Zerar</button>
+        <p id="resultado" class="message" aria-live="polite"></p>
+      </article>
+
+      <article class="card">
+        <!-- html atv 2 -->
+        <section class="counter-section" aria-labelledby="counterTitle">
+          <h2 id="counterTitle">Atividade 2 — Contador</h2>
+          <p id="counterValue" class="counter-value" aria-live="polite">0</p>
+          <div class="counter-actions">
+            <button id="increaseButton" type="button">Aumentar</button>
+            <button id="decreaseButton" type="button" disabled>Diminuir</button>
+            <button id="resetButton" class="reset-button" type="button">Zerar</button>
+          </div>
+        </section>
+      </article>
+
+      <article class="card activity-card">
+        <!-- html atv 3 -->
+        <h2>Atividade 3 — Calculadora</h2>
+        <form id="calculatorForm">
+          <div class="calculator-fields">
+            <label>
+              Primeiro número
+              <input id="calculatorFirst" type="number" step="any" required />
+            </label>
+            <label>
+              Segundo número
+              <input id="calculatorSecond" type="number" step="any" required />
+            </label>
+            <label class="wide-field">
+              Operação
+              <select id="calculatorOperation">
+                <option value="add">Soma</option>
+                <option value="subtract">Subtração</option>
+                <option value="multiply">Multiplicação</option>
+                <option value="divide">Divisão</option>
+              </select>
+            </label>
+          </div>
+          <button type="submit">Calcular</button>
+        </form>
+        <p id="calculatorResult" class="activity-result" aria-live="polite"></p>
+      </article>
+
+      <article class="card activity-card">
+        <!-- html atv 4 -->
+        <h2>Atividade 4 — Tema</h2>
+        <p>Alterne entre os temas claro e escuro.</p>
+        <button id="themeToggle" type="button" aria-pressed="false">Ativar tema escuro</button>
+      </article>
+
+      <article class="card activity-card registration-card">
+        <!-- html atv 5 -->
+        <h2>Atividade 5 — Cadastro</h2>
+        <form id="registrationForm" class="registration-form" novalidate>
+          <label class="wide-field" for="registrationName">Nome</label>
+          <input class="wide-field" id="registrationName" name="name" type="text" autocomplete="name" />
+          <p id="registrationNameError" class="field-error" aria-live="polite"></p>
+
+          <label class="wide-field" for="registrationEmail">E-mail</label>
+          <input class="wide-field" id="registrationEmail" name="email" type="email" autocomplete="email" />
+          <p id="registrationEmailError" class="field-error" aria-live="polite"></p>
+
+          <label class="wide-field" for="registrationPassword">Senha</label>
+          <input class="wide-field" id="registrationPassword" name="password" type="password" autocomplete="new-password" />
+          <p id="registrationPasswordError" class="field-error" aria-live="polite"></p>
+
+          <label class="terms-field wide-field">
+            <input id="registrationTerms" name="terms" type="checkbox" />
+            <span>Aceito os termos.</span>
+          </label>
+          <p id="registrationTermsError" class="field-error wide-field" aria-live="polite"></p>
+          <button class="wide-field" type="submit">Cadastrar</button>
+        </form>
+        <p id="registrationStatus" class="activity-status" aria-live="polite"></p>
+      </article>
+
+      <article class="card activity-card">
+        <!-- html atv 6 -->
+        <h2>Atividade 6 — Tarefas</h2>
+        <form id="taskForm">
+          <label for="taskInput">Nova tarefa</label>
+          <input id="taskInput" type="text" />
+          <button type="submit">Adicionar</button>
+        </form>
+        <p id="taskPendingCount" aria-live="polite">Tarefas pendentes: 0</p>
+        <ul id="taskList" class="task-list" aria-label="Lista de tarefas"></ul>
+      </article>
+
+      <article class="card activity-card catalog-card">
+        <!-- html atv 7 -->
+        <h2>Atividade 7 — Catálogo</h2>
+        <div class="catalog-filters">
+          <label>
+            Buscar por nome
+            <input id="catalogSearch" type="search" />
+          </label>
+          <label>
+            Categoria
+            <select id="catalogCategory">
+              <option value="">Todas</option>
+              <option value="Livros">Livros</option>
+              <option value="Acessórios">Acessórios</option>
+              <option value="Papelaria">Papelaria</option>
+            </select>
+          </label>
+          <label>
+            Ordenar por preço
+            <select id="catalogSort">
+              <option value="name">Nome</option>
+              <option value="ascending">Menor preço</option>
+              <option value="descending">Maior preço</option>
+            </select>
+          </label>
         </div>
-      </section>
+        <p id="catalogCount" class="catalog-count" aria-live="polite"></p>
+        <div id="catalogProducts" class="product-grid"></div>
+        <p id="catalogEmpty" class="activity-status" hidden>Nenhum produto corresponde aos filtros.</p>
+      </article>
+
+      <article class="card activity-card">
+        <!-- html atv 8 -->
+        <h2>Atividade 8 — Quiz</h2>
+        <div class="quiz-progress" role="progressbar" aria-label="Progresso do quiz" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0">
+          <span id="quizProgress"></span>
+        </div>
+        <p id="quizQuestionNumber" aria-live="polite"></p>
+        <h3 id="quizQuestion"></h3>
+        <div id="quizOptions" class="quiz-options"></div>
+        <p id="quizFeedback" class="activity-status" aria-live="polite"></p>
+        <button id="quizNext" type="button" disabled>Próxima</button>
+        <button id="quizRestart" type="button" hidden>Reiniciar</button>
+      </article>
+
+      <article class="card activity-card">
+        <!-- html atv 9 -->
+        <h2>Atividade 9 — Cronômetro</h2>
+        <p id="stopwatchDisplay" class="stopwatch-display" role="timer" aria-label="00 minutos, 00 segundos e 00 centésimos">00:00:00</p>
+        <div class="activity-actions">
+          <button id="stopwatchStart" type="button">Iniciar</button>
+          <button id="stopwatchPause" type="button" disabled>Pausar</button>
+          <button id="stopwatchReset" class="reset-button" type="button">Zerar</button>
+        </div>
+      </article>
+
+      <article class="card activity-card">
+        <!-- html atv 10 -->
+        <h2>Atividade 10 — Bloco de notas</h2>
+        <form id="notesForm" class="notes-form">
+          <label for="noteTitle">Título</label>
+          <input id="noteTitle" type="text" />
+          <label for="noteText">Anotação</label>
+          <textarea id="noteText"></textarea>
+          <div class="activity-actions">
+            <button type="submit">Salvar</button>
+            <button id="noteClear" class="reset-button" type="button">Limpar</button>
+          </div>
+        </form>
+        <p id="noteStatus" class="activity-status" aria-live="polite"></p>
+        <dialog id="noteConfirmDialog" class="confirmation-dialog" aria-labelledby="noteConfirmTitle">
+          <h3 id="noteConfirmTitle">Limpar anotação?</h3>
+          <p>O título e o texto serão apagados.</p>
+          <div class="activity-actions">
+            <button id="noteConfirmClear" type="button">Confirmar limpeza</button>
+            <button id="noteCancelClear" class="reset-button" type="button">Cancelar</button>
+          </div>
+        </dialog>
+      </article>
+
+      <article class="card activity-card">
+        <!-- html atv 11 -->
+        <h2>Atividade 11 — Carregamento assíncrono</h2>
+        <div class="activity-actions">
+          <button id="loadUsersButton" type="button">Carregar usuários</button>
+          <button id="cancelUsersButton" class="reset-button" type="button" disabled>Cancelar</button>
+        </div>
+        <p id="usersStatus" class="activity-status" aria-live="polite"></p>
+        <ul id="usersList" class="user-list" aria-label="Usuários carregados"></ul>
+      </article>
+
+      <article class="card activity-card">
+        <!-- html atv 12 -->
+        <h2>Atividade 12 — Carrinho</h2>
+        <p id="cartModuleHelp" class="activity-status cart-module-help">
+        abra esta página pelo Live Server do VS Code. Módulos ES não funcionam quando abre o arquivo normalmente.
+        </p>
+        <h3>Catálogo</h3>
+        <div id="cartCatalog" class="product-grid"></div>
+        <h3>Seu carrinho</h3>
+        <ul id="cartItems" class="cart-list" aria-label="Itens do carrinho"></ul>
+        <p id="cartEmpty" class="activity-status">Seu carrinho está vazio.</p>
+        <p id="cartQuantity">Unidades: 0</p>
+        <p id="cartTotal" class="cart-total">Total: R$ 0,00</p>
+      </article>
     </main>
 
     <script>
-      // JS Atividade 1
+      // js atv 1
       const form = document.getElementById('greetingForm');
       const input = document.getElementById('nome');
       const resultado = document.getElementById('resultado');
@@ -214,7 +799,7 @@
         }
       });
 
-      // JS Atividade 2
+      // js atv 2
       const counterValue = document.getElementById('counterValue');
       const increaseButton = document.getElementById('increaseButton');
       const decreaseButton = document.getElementById('decreaseButton');
@@ -244,6 +829,654 @@
         contador = 0;
         atualizarContador();
       });
+
+      // js atv 3
+      const calculatorForm = document.getElementById('calculatorForm');
+      const calculatorResult = document.getElementById('calculatorResult');
+
+      calculatorForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const firstInput = document.getElementById('calculatorFirst');
+        const secondInput = document.getElementById('calculatorSecond');
+
+        if (firstInput.value.trim() === '' || secondInput.value.trim() === '') {
+          calculatorResult.textContent = 'Preencha os dois campos numéricos.';
+          calculatorResult.className = 'activity-result error';
+          return;
+        }
+
+        const first = Number(firstInput.value);
+        const second = Number(secondInput.value);
+        const operation = document.getElementById('calculatorOperation').value;
+        let result;
+
+        if (!Number.isFinite(first) || !Number.isFinite(second)) {
+          calculatorResult.textContent = 'Digite dois números válidos.';
+          calculatorResult.className = 'activity-result error';
+          return;
+        }
+
+        switch (operation) {
+          case 'add':
+            result = first + second;
+            break;
+          case 'subtract':
+            result = first - second;
+            break;
+          case 'multiply':
+            result = first * second;
+            break;
+          case 'divide':
+            if (second === 0) {
+              calculatorResult.textContent = 'Não é possível dividir por zero.';
+              calculatorResult.className = 'activity-result error';
+              return;
+            }
+            result = first / second;
+            break;
+          default:
+            calculatorResult.textContent = 'Selecione uma operação válida.';
+            calculatorResult.className = 'activity-result error';
+            return;
+        }
+
+        calculatorResult.textContent = `Resultado: ${result}`;
+        calculatorResult.className = 'activity-result success';
+      });
+
+      // js atv 4
+      const themeToggle = document.getElementById('themeToggle');
+
+      themeToggle.addEventListener('click', function () {
+        const darkThemeEnabled = document.body.classList.toggle('dark-theme');
+        themeToggle.setAttribute('aria-pressed', String(darkThemeEnabled));
+        themeToggle.textContent = darkThemeEnabled ? 'Ativar tema claro' : 'Ativar tema escuro';
+      });
+
+      // js atv 5
+      const registrationForm = document.getElementById('registrationForm');
+      const registrationFields = {
+        name: document.getElementById('registrationName'),
+        email: document.getElementById('registrationEmail'),
+        password: document.getElementById('registrationPassword'),
+        terms: document.getElementById('registrationTerms'),
+      };
+      const registrationStatus = document.getElementById('registrationStatus');
+
+      registrationForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const errors = {
+          name: registrationFields.name.value.trim().length < 3
+            ? 'Informe um nome com pelo menos três caracteres.'
+            : '',
+          email: !registrationFields.email.validity.valid || registrationFields.email.value.trim() === ''
+            ? 'Informe um e-mail válido.'
+            : '',
+          password: registrationFields.password.value.length < 8
+            ? 'A senha precisa ter pelo menos oito caracteres.'
+            : '',
+          terms: !registrationFields.terms.checked
+            ? 'Aceite os termos para continuar.'
+            : '',
+        };
+
+        let hasErrors = false;
+        Object.entries(errors).forEach(function ([fieldName, error]) {
+          const field = registrationFields[fieldName];
+          const errorMessage = document.getElementById(`registration${fieldName[0].toUpperCase()}${fieldName.slice(1)}Error`);
+          const invalid = Boolean(error);
+          field.classList.toggle('invalid-field', invalid);
+          field.setAttribute('aria-invalid', String(invalid));
+          errorMessage.textContent = error;
+          hasErrors = hasErrors || invalid;
+        });
+
+        if (hasErrors) {
+          registrationStatus.textContent = 'Revise os campos destacados.';
+          registrationStatus.className = 'activity-status error';
+          return;
+        }
+
+        registrationStatus.textContent = `Cadastro simulado com sucesso, ${registrationFields.name.value.trim()}!`;
+        registrationStatus.className = 'activity-status success';
+        registrationForm.reset();
+      });
+
+      // js atv 6
+      const taskForm = document.getElementById('taskForm');
+      const taskInput = document.getElementById('taskInput');
+      const taskList = document.getElementById('taskList');
+      const taskPendingCount = document.getElementById('taskPendingCount');
+      const tasks = [];
+      let nextTaskId = 1;
+
+      function renderTasks() {
+        taskList.replaceChildren();
+
+        tasks.forEach(function (task) {
+          const item = document.createElement('li');
+          item.className = `task-item${task.completed ? ' is-complete' : ''}`;
+          item.dataset.taskId = String(task.id);
+
+          const text = document.createElement('span');
+          text.className = 'task-text';
+          text.textContent = task.text;
+
+          const actions = document.createElement('div');
+          actions.className = 'activity-actions';
+
+          const toggleButton = document.createElement('button');
+          toggleButton.type = 'button';
+          toggleButton.dataset.action = 'toggle';
+          toggleButton.textContent = task.completed ? 'Reabrir' : 'Concluir';
+
+          const deleteButton = document.createElement('button');
+          deleteButton.type = 'button';
+          deleteButton.dataset.action = 'delete';
+          deleteButton.className = 'delete-button';
+          deleteButton.textContent = 'Excluir';
+
+          actions.append(toggleButton, deleteButton);
+          item.append(text, actions);
+          taskList.append(item);
+        });
+
+        const pending = tasks.filter(function (task) {
+          return !task.completed;
+        }).length;
+        taskPendingCount.textContent = `Tarefas pendentes: ${pending}`;
+      }
+
+      taskForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const text = taskInput.value.trim();
+
+        if (!text) {
+          taskInput.focus();
+          return;
+        }
+
+        tasks.push({ id: nextTaskId, text, completed: false });
+        nextTaskId += 1;
+        taskInput.value = '';
+        renderTasks();
+        taskInput.focus();
+      });
+
+      taskList.addEventListener('click', function (event) {
+        const button = event.target.closest('button[data-action]');
+        const item = button && button.closest('[data-task-id]');
+
+        if (!button || !item) {
+          return;
+        }
+
+        const taskId = Number(item.dataset.taskId);
+        const task = tasks.find(function (entry) {
+          return entry.id === taskId;
+        });
+
+        if (!task) {
+          return;
+        }
+
+        if (button.dataset.action === 'toggle') {
+          task.completed = !task.completed;
+        } else if (button.dataset.action === 'delete') {
+          const taskIndex = tasks.findIndex(function (entry) {
+            return entry.id === taskId;
+          });
+          tasks.splice(taskIndex, 1);
+        }
+
+        renderTasks();
+      });
+
+      renderTasks();
+
+      // js atv 7
+      const catalogProducts = [
+        { name: 'JavaScript para Iniciantes', category: 'Livros', price: 59.9 },
+        { name: 'Caderno Criativo', category: 'Papelaria', price: 24.5 },
+        { name: 'Caneca CustomSoul', category: 'Acessórios', price: 35 },
+        { name: 'HTML e CSS na Prática', category: 'Livros', price: 72.9 },
+        { name: 'Canetas Coloridas', category: 'Papelaria', price: 18.75 },
+        { name: 'Garrafa Térmica', category: 'Acessórios', price: 89.9 },
+      ];
+      const catalogSearch = document.getElementById('catalogSearch');
+      const catalogCategory = document.getElementById('catalogCategory');
+      const catalogSort = document.getElementById('catalogSort');
+      const catalogProductsContainer = document.getElementById('catalogProducts');
+      const catalogCount = document.getElementById('catalogCount');
+      const catalogEmpty = document.getElementById('catalogEmpty');
+      const currencyFormatter = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+      });
+
+      function renderCatalog() {
+        const searchTerm = catalogSearch.value.trim().toLocaleLowerCase('pt-BR');
+        const category = catalogCategory.value;
+        const sortOrder = catalogSort.value;
+        const filteredProducts = catalogProducts
+          .filter(function (product) {
+            return product.name.toLocaleLowerCase('pt-BR').includes(searchTerm)
+              && (!category || product.category === category);
+          });
+
+        if (sortOrder === 'ascending') {
+          filteredProducts.sort(function (a, b) {
+            return a.price - b.price;
+          });
+        } else if (sortOrder === 'descending') {
+          filteredProducts.sort(function (a, b) {
+            return b.price - a.price;
+          });
+        } else {
+          filteredProducts.sort(function (a, b) {
+            return a.name.localeCompare(b.name, 'pt-BR');
+          });
+        }
+
+        const productCards = filteredProducts.map(function (product) {
+          const card = document.createElement('article');
+          card.className = 'product-item';
+
+          const name = document.createElement('strong');
+          name.textContent = product.name;
+          const details = document.createElement('span');
+          details.textContent = `${product.category} — ${currencyFormatter.format(product.price)}`;
+
+          card.append(name, details);
+          return card;
+        });
+
+        catalogProductsContainer.replaceChildren(...productCards);
+        catalogCount.textContent = `${filteredProducts.length} produto(s) encontrado(s).`;
+        catalogEmpty.hidden = filteredProducts.length !== 0;
+      }
+
+      catalogSearch.addEventListener('input', renderCatalog);
+      catalogCategory.addEventListener('change', renderCatalog);
+      catalogSort.addEventListener('change', renderCatalog);
+      renderCatalog();
+
+      // js atv 8
+      const quizQuestions = [
+        {
+          question: 'Qual método adiciona um item ao final de um array?',
+          options: ['push()', 'shift()', 'find()'],
+          answerIndex: 0,
+        },
+        {
+          question: 'Qual palavra declara uma constante em JavaScript?',
+          options: ['let', 'const', 'var'],
+          answerIndex: 1,
+        },
+        {
+          question: 'Qual propriedade indica a quantidade de itens de um array?',
+          options: ['size', 'count', 'length'],
+          answerIndex: 2,
+        },
+      ];
+      const quizQuestionNumber = document.getElementById('quizQuestionNumber');
+      const quizQuestion = document.getElementById('quizQuestion');
+      const quizOptions = document.getElementById('quizOptions');
+      const quizFeedback = document.getElementById('quizFeedback');
+      const quizNext = document.getElementById('quizNext');
+      const quizRestart = document.getElementById('quizRestart');
+      const quizProgress = document.getElementById('quizProgress');
+      const quizProgressBar = quizProgress.parentElement;
+      let quizIndex = 0;
+      let quizScore = 0;
+      let quizAnswered = false;
+
+      function renderQuizQuestion() {
+        const currentQuestion = quizQuestions[quizIndex];
+        quizAnswered = false;
+        quizQuestionNumber.textContent = `Pergunta ${quizIndex + 1} de ${quizQuestions.length}`;
+        quizQuestion.textContent = currentQuestion.question;
+        quizOptions.replaceChildren();
+        quizFeedback.textContent = '';
+        quizFeedback.className = 'activity-status';
+        quizNext.disabled = true;
+        quizNext.hidden = false;
+        quizRestart.hidden = true;
+        quizProgressBar.setAttribute('aria-valuenow', String(quizIndex));
+        quizProgress.style.width = `${(quizIndex / quizQuestions.length) * 100}%`;
+
+        currentQuestion.options.forEach(function (option, optionIndex) {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.dataset.optionIndex = String(optionIndex);
+          button.textContent = option;
+          quizOptions.append(button);
+        });
+      }
+
+      quizOptions.addEventListener('click', function (event) {
+        const button = event.target.closest('button[data-option-index]');
+        if (!button || quizAnswered) {
+          return;
+        }
+
+        quizAnswered = true;
+        const selectedIndex = Number(button.dataset.optionIndex);
+        const currentQuestion = quizQuestions[quizIndex];
+        const isCorrect = selectedIndex === currentQuestion.answerIndex;
+        if (isCorrect) {
+          quizScore += 1;
+        }
+
+        Array.from(quizOptions.querySelectorAll('button')).forEach(function (optionButton) {
+          const optionIndex = Number(optionButton.dataset.optionIndex);
+          optionButton.disabled = true;
+          if (optionIndex === currentQuestion.answerIndex) {
+            optionButton.classList.add('correct-answer');
+          } else if (optionIndex === selectedIndex) {
+            optionButton.classList.add('wrong-answer');
+          }
+        });
+
+        quizFeedback.textContent = isCorrect ? 'Resposta correta!' : 'Resposta incorreta.';
+        quizFeedback.className = `activity-status ${isCorrect ? 'success' : 'error'}`;
+        quizNext.disabled = false;
+        quizProgressBar.setAttribute('aria-valuenow', String(quizIndex + 1));
+        quizProgress.style.width = `${((quizIndex + 1) / quizQuestions.length) * 100}%`;
+      });
+
+      quizNext.addEventListener('click', function () {
+        if (!quizAnswered) {
+          return;
+        }
+
+        quizIndex += 1;
+        if (quizIndex < quizQuestions.length) {
+          renderQuizQuestion();
+          return;
+        }
+
+        quizQuestionNumber.textContent = 'Quiz concluído';
+        quizQuestion.textContent = `Pontuação: ${quizScore} de ${quizQuestions.length}`;
+        quizOptions.replaceChildren();
+        quizFeedback.textContent = 'Parabéns por concluir o quiz!';
+        quizFeedback.className = 'activity-status success';
+        quizNext.hidden = true;
+        quizRestart.hidden = false;
+        quizProgress.style.width = '100%';
+        quizProgressBar.setAttribute('aria-valuenow', String(quizQuestions.length));
+      });
+
+      quizRestart.addEventListener('click', function () {
+        quizIndex = 0;
+        quizScore = 0;
+        renderQuizQuestion();
+      });
+
+      renderQuizQuestion();
+
+      // js atv 9
+      const stopwatchDisplay = document.getElementById('stopwatchDisplay');
+      const stopwatchStart = document.getElementById('stopwatchStart');
+      const stopwatchPause = document.getElementById('stopwatchPause');
+      const stopwatchReset = document.getElementById('stopwatchReset');
+      let stopwatchElapsed = 0;
+      let stopwatchStartedAt = 0;
+      let stopwatchFrame = null;
+
+      function renderStopwatch() {
+        const elapsed = stopwatchElapsed + (stopwatchFrame === null ? 0 : performance.now() - stopwatchStartedAt);
+        const totalCentiseconds = Math.floor(elapsed / 10);
+        const minutes = Math.floor(totalCentiseconds / 6000);
+        const seconds = Math.floor((totalCentiseconds % 6000) / 100);
+        const centiseconds = totalCentiseconds % 100;
+        const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(centiseconds).padStart(2, '0')}`;
+        stopwatchDisplay.textContent = formattedTime;
+        stopwatchDisplay.setAttribute(
+          'aria-label',
+          `${String(minutes).padStart(2, '0')} minutos, ${String(seconds).padStart(2, '0')} segundos e ${String(centiseconds).padStart(2, '0')} centésimos`,
+        );
+      }
+
+      function updateStopwatch() {
+        renderStopwatch();
+        stopwatchFrame = requestAnimationFrame(updateStopwatch);
+      }
+
+      stopwatchStart.addEventListener('click', function () {
+        if (stopwatchFrame !== null) {
+          return;
+        }
+
+        stopwatchStartedAt = performance.now();
+        stopwatchStart.disabled = true;
+        stopwatchPause.disabled = false;
+        stopwatchFrame = requestAnimationFrame(updateStopwatch);
+      });
+
+      stopwatchPause.addEventListener('click', function () {
+        if (stopwatchFrame === null) {
+          return;
+        }
+
+        cancelAnimationFrame(stopwatchFrame);
+        stopwatchElapsed += performance.now() - stopwatchStartedAt;
+        stopwatchFrame = null;
+        stopwatchStart.disabled = false;
+        stopwatchPause.disabled = true;
+        renderStopwatch();
+      });
+
+      stopwatchReset.addEventListener('click', function () {
+        if (stopwatchFrame !== null) {
+          cancelAnimationFrame(stopwatchFrame);
+          stopwatchFrame = null;
+        }
+
+        stopwatchElapsed = 0;
+        stopwatchStartedAt = 0;
+        stopwatchStart.disabled = false;
+        stopwatchPause.disabled = true;
+        renderStopwatch();
+      });
+
+      // js atv 10
+      const noteStorageKey = 'customsoul-note';
+      const noteTitle = document.getElementById('noteTitle');
+      const noteText = document.getElementById('noteText');
+      const notesForm = document.getElementById('notesForm');
+      const noteStatus = document.getElementById('noteStatus');
+      const noteConfirmDialog = document.getElementById('noteConfirmDialog');
+      let memoryNote = { title: '', text: '' };
+
+      function setNoteStatus(message, type) {
+        noteStatus.textContent = message;
+        noteStatus.className = `activity-status${type ? ` ${type}` : ''}`;
+      }
+
+      function isValidNote(value) {
+        return value !== null
+          && typeof value === 'object'
+          && typeof value.title === 'string'
+          && typeof value.text === 'string';
+      }
+
+      function restoreNote() {
+        try {
+          const storedNote = localStorage.getItem(noteStorageKey);
+          if (storedNote === null) {
+            noteTitle.value = memoryNote.title;
+            noteText.value = memoryNote.text;
+            return;
+          }
+
+          const parsedNote = JSON.parse(storedNote);
+          if (!isValidNote(parsedNote)) {
+            throw new TypeError('A anotação salva tem um formato inválido.');
+          }
+
+          memoryNote = { title: parsedNote.title, text: parsedNote.text };
+          noteTitle.value = memoryNote.title;
+          noteText.value = memoryNote.text;
+        } catch (error) {
+          noteTitle.value = memoryNote.title;
+          noteText.value = memoryNote.text;
+          setNoteStatus(
+            error instanceof SyntaxError
+              ? 'Os dados salvos estavam inválidos. Você pode continuar usando a anotação em memória.'
+              : error instanceof TypeError
+                ? 'A anotação salva tinha uma estrutura inválida. Você pode continuar usando a anotação em memória.'
+                : 'O armazenamento não está disponível. A anotação ficará apenas nesta sessão.',
+            'error',
+          );
+        }
+      }
+
+      notesForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        memoryNote = { title: noteTitle.value, text: noteText.value };
+
+        try {
+          localStorage.setItem(noteStorageKey, JSON.stringify(memoryNote));
+          setNoteStatus('Anotação salva neste navegador.', 'success');
+        } catch (error) {
+          setNoteStatus('Não foi possível acessar o armazenamento. Anotação mantida em memória nesta sessão.', 'error');
+        }
+      });
+
+      document.getElementById('noteClear').addEventListener('click', function () {
+        noteConfirmDialog.showModal();
+      });
+
+      document.getElementById('noteCancelClear').addEventListener('click', function () {
+        noteConfirmDialog.close();
+      });
+
+      document.getElementById('noteConfirmClear').addEventListener('click', function () {
+        memoryNote = { title: '', text: '' };
+        noteTitle.value = '';
+        noteText.value = '';
+
+        try {
+          localStorage.removeItem(noteStorageKey);
+          setNoteStatus('Anotação limpa.', 'success');
+        } catch (error) {
+          setNoteStatus('Anotação limpa nesta sessão, mas o armazenamento não está disponível.', 'error');
+        }
+
+        noteConfirmDialog.close();
+      });
+
+      restoreNote();
+
+      // js atv 11
+      const loadUsersButton = document.getElementById('loadUsersButton');
+      const cancelUsersButton = document.getElementById('cancelUsersButton');
+      const usersStatus = document.getElementById('usersStatus');
+      const usersList = document.getElementById('usersList');
+      const demoUsers = [
+        { id: 1, name: 'Ana Costa', email: 'ana@example.com' },
+        { id: 2, name: 'Bruno Lima', email: 'bruno@example.com' },
+        { id: 3, name: 'Carla Souza', email: 'carla@example.com' },
+      ];
+      let usersController = null;
+
+      function waitForUsers(signal) {
+        return new Promise(function (resolve, reject) {
+          const handleAbort = function () {
+            window.clearTimeout(timeoutId);
+            reject(new DOMException('Carregamento cancelado.', 'AbortError'));
+          };
+          const timeoutId = window.setTimeout(function () {
+            signal.removeEventListener('abort', handleAbort);
+            resolve();
+          }, 1200);
+
+          signal.addEventListener('abort', handleAbort, { once: true });
+          if (signal.aborted) {
+            handleAbort();
+          }
+        });
+      }
+
+      function isValidUsers(value) {
+        return Array.isArray(value)
+          && value.every(function (user) {
+            return user !== null
+              && typeof user === 'object'
+              && (typeof user.id === 'number' || typeof user.id === 'string')
+              && typeof user.name === 'string'
+              && typeof user.email === 'string';
+          });
+      }
+
+      loadUsersButton.addEventListener('click', async function () {
+        if (usersController) {
+          return;
+        }
+
+        const controller = new AbortController();
+        usersController = controller;
+        let temporaryUrl = null;
+        usersList.replaceChildren();
+        loadUsersButton.disabled = true;
+        cancelUsersButton.disabled = false;
+        usersStatus.textContent = 'Carregando usuários...';
+        usersStatus.className = 'activity-status';
+
+        try {
+          const temporaryJson = new Blob([JSON.stringify(demoUsers)], { type: 'application/json' });
+          temporaryUrl = URL.createObjectURL(temporaryJson);
+          await waitForUsers(controller.signal);
+          const response = await fetch(temporaryUrl, { signal: controller.signal });
+
+          if (!response.ok) {
+            throw new Error(`Falha ao carregar os dados (HTTP ${response.status}).`);
+          }
+
+          const users = await response.json();
+          if (!isValidUsers(users)) {
+            throw new Error('Os dados recebidos não têm o formato esperado.');
+          }
+
+          const userItems = users.map(function (user) {
+            const item = document.createElement('li');
+            item.className = 'user-item';
+            item.textContent = `${user.name} — ${user.email}`;
+            return item;
+          });
+          usersList.replaceChildren(...userItems);
+          usersStatus.textContent = `${users.length} usuário(s) carregado(s).`;
+          usersStatus.className = 'activity-status success';
+        } catch (error) {
+          if (error.name === 'AbortError') {
+            usersStatus.textContent = 'Carregamento cancelado.';
+            usersStatus.className = 'activity-status error';
+          } else {
+            usersStatus.textContent = `Não foi possível carregar os usuários: ${error.message}`;
+            usersStatus.className = 'activity-status error';
+          }
+        } finally {
+          if (temporaryUrl) {
+            URL.revokeObjectURL(temporaryUrl);
+          }
+          usersController = null;
+          loadUsersButton.disabled = false;
+          cancelUsersButton.disabled = true;
+        }
+      });
+
+      cancelUsersButton.addEventListener('click', function () {
+        if (usersController) {
+          usersController.abort();
+        }
+      });
+
+      // js atv 12
     </script>
+
+    <script type="module" src="js/atividade12.js"></script>
   </body>
 </html>
